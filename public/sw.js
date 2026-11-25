@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "unfound-pays-";
-const CACHE_NAME = `${CACHE_PREFIX}shell-v1`;
+const CACHE_NAME = `${CACHE_PREFIX}shell-v2`;
 
 self.addEventListener("install", (event) => {
   const appShell = new URL("./", self.registration.scope).toString();
