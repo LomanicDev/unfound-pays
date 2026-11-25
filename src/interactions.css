@@ -245,6 +245,231 @@
   color: #fff;
 }
 
+/* Consistent, larger controls for the desktop expense/income form. */
+.transaction-dialog {
+  padding: 26px !important;
+}
+.transaction-dialog .transaction-form {
+  gap: 11px;
+  margin-top: 13px;
+}
+.transaction-dialog .field-label {
+  margin-top: 3px;
+  color: #b8b8c0;
+  font-size: 12px;
+}
+.transaction-dialog .transaction-form [data-slot="input"],
+.transaction-dialog .form-select {
+  min-height: 44px;
+  height: 44px;
+  padding-inline: 13px;
+  font-size: 14px;
+}
+.transaction-dialog .type-switch button {
+  min-height: 40px;
+  font-size: 13px;
+}
+.transaction-dialog .form-grid {
+  gap: 14px;
+}
+.transaction-dialog [data-slot="dialog-footer"] > button {
+  min-height: 42px;
+  padding-inline: 16px;
+  font-size: 13px;
+}
+
+/* The mobile swipe sheet has its own form controls, so style them explicitly
+   instead of letting browser defaults leak through. */
+.transaction-swipe-sheet {
+  display: flex;
+  max-height: min(92dvh, 780px);
+  min-height: 0;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-bottom: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgb(255 255 255 / 7%), transparent 48%),
+    rgb(9 9 10 / 94%);
+  padding: 18px 20px calc(22px + env(safe-area-inset-bottom));
+}
+.transaction-swipe-sheet::-webkit-scrollbar { display: none; }
+.transaction-swipe-head {
+  flex: 0 0 auto;
+  margin-bottom: 18px;
+}
+.transaction-swipe-head > button {
+  margin-left: auto;
+  border-radius: 50%;
+}
+.swipe-head-symbol {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgb(196 181 253 / 22%);
+  border-radius: 50%;
+  background: rgb(196 181 253 / 9%);
+  color: #d4c8ff;
+}
+.swipe-form-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 15px;
+  padding-bottom: 12px;
+  transition: filter 150ms ease, opacity 150ms ease;
+}
+.swipe-kind-switch {
+  position: relative;
+  display: grid;
+  min-height: 48px;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 4px;
+  border: 1px solid rgb(255 255 255 / 11%);
+  border-radius: 15px;
+  background: rgb(255 255 255 / 3%);
+  padding: 4px;
+}
+.swipe-kind-thumb { display: none; }
+.swipe-kind-switch button {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  background: transparent;
+  color: #93939b;
+  font-size: 14px;
+  font-weight: 550;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+.swipe-kind-switch.expense button[aria-pressed="true"] {
+  border-color: rgb(248 113 113 / 24%);
+  background: rgb(248 113 113 / 10%);
+  color: #ff999f;
+}
+.swipe-kind-switch.income button[aria-pressed="true"] {
+  border-color: rgb(74 222 128 / 24%);
+  background: rgb(74 222 128 / 9%);
+  color: #82e8a6;
+}
+.swipe-field {
+  display: grid;
+  min-width: 0;
+  gap: 7px;
+  color: #aaaab2;
+  font-size: 12px;
+  font-weight: 550;
+}
+.swipe-field input,
+.swipe-field select {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 13px;
+  outline: 0;
+  background: rgb(0 0 0 / 34%);
+  padding: 0 13px;
+  color: #f1f1f3;
+  color-scheme: dark;
+  font: inherit;
+  font-size: 14px;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+.swipe-field input::placeholder { color: #686871; }
+.swipe-field input:focus,
+.swipe-field select:focus {
+  border-color: rgb(196 181 253 / 48%);
+  background: rgb(0 0 0 / 48%);
+  box-shadow: 0 0 0 3px rgb(167 139 250 / 12%);
+}
+.swipe-field-grid {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 11px;
+}
+.swipe-field select { appearance: auto; }
+.swipe-amount {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 14px;
+  background: rgb(255 255 255 / 3%);
+  padding: 12px 14px;
+}
+.swipe-amount > span {
+  color: #8d8d96;
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+.swipe-amount strong {
+  overflow: hidden;
+  color: #ff999f;
+  font-size: clamp(19px, 5vw, 25px);
+  font-variant-numeric: tabular-nums;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.swipe-amount strong.income { color: #82e8a6; }
+.swipe-keypad {
+  width: 100%;
+  max-width: none;
+  gap: 7px;
+  margin: 0;
+}
+.swipe-keypad button {
+  height: 42px;
+  border-radius: 12px;
+  font-size: 17px;
+}
+.swipe-confirm-track {
+  width: 100%;
+  height: 54px;
+  margin-top: 1px;
+  border-radius: 16px;
+  transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+.swipe-confirm-track .deposit-track-copy {
+  color: #aaaab2;
+  font-size: 12px;
+  font-weight: 550;
+}
+.swipe-confirm-track.expense.ready {
+  border-color: rgb(248 113 113 / 36%);
+  background: rgb(248 113 113 / 8%);
+  box-shadow: 0 0 28px rgb(248 113 113 / 7%);
+}
+.swipe-confirm-track.income.ready {
+  border-color: rgb(74 222 128 / 36%);
+  background: rgb(74 222 128 / 8%);
+  box-shadow: 0 0 28px rgb(74 222 128 / 7%);
+}
+.swipe-confirm-track.expense .deposit-thumb { color: #f87171; }
+.swipe-confirm-track.income .deposit-thumb { color: #4ade80; }
+.transaction-swipe-sheet .deposit-error { font-size: 12px; }
+.transaction-swipe-sheet .deposit-home-indicator { display: none; }
+.transaction-swipe-sheet button:focus-visible,
+.transaction-swipe-sheet input:focus-visible,
+.transaction-swipe-sheet select:focus-visible,
+.transaction-dialog button:focus-visible {
+  outline: 2px solid rgb(196 181 253 / 72%);
+  outline-offset: 2px;
+}
+
 .profile-menu {
   position: relative;
   margin-left: auto;
